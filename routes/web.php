@@ -44,4 +44,4 @@ Route::delete('/myaccount', 'UserController@destroy');
 
 
 // Legacy Routes (Keeping the route active due to pages being indexed by search engines.)
-Route::get('/viewclan/{id}/{name}',  'PagesController@viewclan');
+Route::get('/viewclan/{id}/{name}',  'ClansController@index');
