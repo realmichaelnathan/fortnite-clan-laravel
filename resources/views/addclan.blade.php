@@ -1,0 +1,98 @@
+@extends('layout') 
+@section('title', 'Add your clan!') 
+@section('content')
+<div class="container mt-2 mb-2">
+    <div class="row justify-content-center">
+        <div class="col-11 col-sm-7">
+
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
+
+            <form action="/addclan" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="alert alert-secondary" role="alert">
+                    <h4 class="alert-heading">Want More People To Notice Your Clan?</h4>
+                    <p>A complete description with details about the clan such as the requirements to join and who to contact if someone is interested 
+                        is a good start! Listing Clan Social Media accounts help you take your exposure to the next level!</p>
+                </div>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="Text" class="form-control" name="name" />
+                    <small class="form-test text-muted">The name of the Clan goes here.</small>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="summernote" class="form-control" rows="3" name="description"></textarea>
+                    <small class="form-test text-muted">The description of the Clan goes here.</small>
+                </div>
+                <div class="form-group">
+                    <label for="image-upload">Clan Image</label>
+                    <input type="file" class="form-control-file" id="image" name="image">
+                    <small class="form-test text-muted">Please choose an image that is 16:9 in ratio (The larger the better.)</small>
+                </div>
+                <div class="alert alert-secondary" role="alert">
+                    <h4 class="alert-heading">Discord Invite Links</h4>
+                    <p class="mb-0">
+                        When creating a invite link for your Discord server make sure that the link is not a temporary invite link. 
+                        Links expire by default after 1 day! So make sure to go into the settings and set the link to never expire!
+                    </p>
+                    <hr>
+                    <p class="mb-0">If you do not have an account then leave the text field blank :)</p>
+                </div>
+                <div class="form-group">
+                    <label>Discord</label>
+                    <input type="Text" class="form-control" name="discord" />
+                    <small class="form-test text-muted">A link to the Clan's Discord Server.</small>
+                </div>
+                <div class="form-group">
+                    <label>Instagram</label>
+                    <input type="Text" class="form-control" name="instagram" />
+                    <small class="form-test text-muted">A link to the Clan's Instagram.</small>
+                </div>
+                <div class="form-group">
+                    <label>Twitter</label>
+                    <input type="Text" class="form-control" name="twitter" />
+                    <small class="form-test text-muted">A link to the Clan's Twitter.</small>
+                </div>
+                <div class="form-group">
+                    <label>YouTube</label>
+                    <input type="Text" class="form-control" name="youtube" />
+                    <small class="form-test text-muted">A link to the Clan's YouTube.</small>
+                </div>	
+                <button class="btn btn-primary btn-lg">Add Clan</button>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+ 
+@section('headers')
+<!-- include summernote css/js -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
+<!-- end summernote --->
+@endsection
+ 
+@section('footers')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
+<script>
+    $(document).ready(function() {
+            $('#summernote').summernote({
+                 tabsize: 2,
+                 height: 180,
+                 toolbar: [
+                   // [groupName, [list of button]]
+                   ['style', ['bold', 'italic', 'underline', 'clear']],
+                   ['fontsize', ['fontsize']],
+                   ['color', ['color']],
+                   ['para', ['ul', 'ol', 'paragraph']]
+              ],
+              disableDragAndDrop: true
+            });
+        });
+</script>
+@endsection
