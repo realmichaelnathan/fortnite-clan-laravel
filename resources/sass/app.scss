@@ -40,7 +40,7 @@ nav {
   overflow: hidden;
   margin-bottom:0;
   width:100%;
-  .leaderboard {
+  &.leaderboard {
     background: linear-gradient(rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0.473)),
         url("https://fortniteclan.com/images/fortniteclanlookingdown1.jpg") center bottom fixed no-repeat;
         height: 300px;
