@@ -109,7 +109,10 @@ footer {
       font-weight: bold;
     }
   } 
-} 
+}
+.fa, .fab, .fal, .far, .fas {
+  line-height: unset; 
+}
 /*  End General Tags  */
 /* Social Media */
 button.social:hover {
