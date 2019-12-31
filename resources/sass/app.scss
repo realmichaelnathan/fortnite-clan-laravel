@@ -1,14 +1,330 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy|Montserrat&display=swap');
 
-// Variables
-@import 'variables';
+/* Navbar */
+nav {
+  background: linear-gradient(45deg, #593196, #6f2f6d);
+  a {
+    text-transform: uppercase;
+    font-family: 'Luckiest Guy', sans-serif;
+  }
+}
+.logo {
+  height: 30px;
+  width: auto;
+}
+/* End Navbar */
+/* Leaderboard */
+.trophy {
+  font-size: 50px;
+  color: rgba(0, 0, 0, 0.267);
+  text-align:center;
+}
+.gold {
+  background: -webkit-linear-gradient(rgb(255, 251, 6), rgb(255, 174, 0));
+}
+.silver {
+  background: -webkit-linear-gradient(rgb(211, 211, 211), rgb(139, 139, 139));
+}
+.bronze {
+  background: -webkit-linear-gradient(rgb(146, 124, 52), rgb(116, 87, 26));
+}
+/* End Leaderboard */
+/* Paralax */
+#paralax {
+  height: 500px;
+  background: linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.10)),
+      url("../images/chapter2fortnite.jpg") center center fixed no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  margin-bottom:0;
+  width:100%;
+  .leaderboard {
+    background: linear-gradient(rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0.473)),
+        url("../images/fortniteclanlookingdown1.jpg") center bottom fixed no-repeat;
+        height: 300px;
+  }
+  h1, h2, h3 {
+    font-family: 'Luckiest Guy', sans-serif;
+    color: #fff;
+  }
+  p {
+    max-width:800px;
+    text-indent:15px;
+  }
+}
+/* End Paralax */
+/*  General Tags */
+button.btn, a.btn {
+  text-transform: uppercase;
+  font-family: 'Luckiest Guy', sans-serif;
+}
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+html, body {
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+hr {
+  height: 3px;
+  border:0;
+  padding:0;
+  background: #ffffff38;
+}
+a:hover {
+  text-decoration: none;
+}
+main {
+  min-height: calc(100vh - 370px);
+}
+footer {
+  bottom: 0;
+  background: linear-gradient(90deg, #131313, #272727);
+  min-height: 310px;
+  position:relative;
+  overflow-x:hidden;
+}
+footer {
+  p {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  h5 {
+    text-transform: uppercase;
+    font-family: 'Luckiest Guy', cursive;
+    color: #fff;
+    text-align:center;
+  }
+  #links {
+    a {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    a:hover {
+      font-weight: bold;
+    }
+  } 
+} 
+/*  End General Tags  */
+/* Social Media */
+button.social:hover {
+  background: linear-gradient(45deg, #593196, #6f2f6d);
+}
+.social {
+  border: none;
+  display: flex;
+  height: 50px;
+  width: 50px;
+  justify-content: center;
+  color: #fff;
+  margin: 0px 2px;
+  font-size: 24px;
+}
+.bigsocial {
+  border: none;
+  display: flex;
+  height: 75px;
+  width: 75px;
+  justify-content: center;
+  align-items:center;
+  color: #fff;
+  margin: 3px 3px;
+  font-size: 35px;
+}
+.instagram {
+  background: #f09433; 
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+}
+.twitter {
+  background: #38A1F3;
+  color: #fff;
+}
+.discord {
+  background: #7289da;
+}
+.facebook {
+  background: #4267b2;
+}
+.youtube {
+  background: #c4302b;
+}
+/* End Social Media */
+/* Clan View */
+.clan-image-container {
+  overflow:hidden;
+  position:relative;
+  justify-content:center;
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+.bg-image-blurred {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-size: cover;
+  background-position: center center;
+  filter: blur(25px);
+  z-index: 0;
+}
+#votebox {
+  margin-bottom: 0.5rem;
+  max-width:194px;
+}
+#descriptionbox {
+  height:100%;
+}
+#socialsbox {
+  max-width:194px;
+}
+@media (max-width:500px) {
+  #boxcontainer {
+      flex-direction:column-reverse;
+  }
+  #votebox {
+      margin-right: 0.5rem;
+      margin-bottom:0;
+  }
+  #socialsbox {
+      height:100%;
+      div.card-body {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+  }
+}
+.clan-text {
+  font-size: 20px;
+}
+.clan-name {
+  padding:5px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #593196, #6f2f6d);
+  h1 {
+    color: #fff;
+    font-size: 32px;
+  }
+}
+.clan-image {
+  height: 320px;
+  width: auto;
+  z-index: 10;
+}
+/* End Clan View */
+/* Index Classes */
+.wrapper {
+  width: 100%;
+  position: relative;
+  overflow-x:hidden;
+}
+.jumbotron-content {
+  background: #00000069;
+  display:flex;
+  padding: 10px 0;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  height:100%;
+}
+
+/* Clan Card */
+.card-size {
+  width: 22.57rem;
+  padding: 0.25rem;
+  margin: 0.5rem;
+}
+.clan-image-hover-container {
+  overflow: hidden;
+  position: relative;
+  &:hover {
+    .clan-image-hover-div {
+      display:flex;
+    }
+  } 
+}
+.clan-image-hover-div {
+  z-index:55;
+  background-color:rgba(0, 0, 0, 0.829);
+  position:absolute;
+  top:0; 
+  left:0;
+  height: 12.63rem;
+  width: 22.45rem; 
+  display:none;
+}
+.clan-thumbnail-image {
+  z-index:66;
+  height: 12.63rem;
+  width: 100%;
+}
+.card-header {
+  background: linear-gradient(45deg, #593196, #6f2f6d);
+}
+.card-body {
+background-color: #3f3f3f7a;
+}
+.active-clan {
+  width: 100%;
+  height: 25px;
+  position: absolute;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  font-size: 13px;
+  justify-content: center;
+  align-items: center;
+  background-color: #e30be4e3 !important;
+}
+/* End Clan Card */
+
+@media only screen and (max-width: 500px) {
+  .card-header h5 {
+      font-size:18px;
+      text-overflow: clip;
+      max-height: 1em;
+      overflow: hidden;
+  }
+  .card-body {
+      padding: 0.45rem;
+      p {
+        font-size: 14px;
+    }
+  }
+  .clan-text {
+      font-size: 14px;
+  }
+  p.mb-0 {
+      margin-bottom:3px !important;
+  }
+  .social {
+      height:40px;
+      width:40px;
+      font-size: 20px;
+  }
+  footer {
+      font-size:14px;
+  }
+  #paralax {
+    .container-fluid {
+      padding: 10px 0;
+    }
+    h1, h2, h3, h4 {
+      font-size:24px;
+    }
+  }
+}
+@media only screen and (max-width: 375px) {
+  footer #links a {
+      font-size: 11px;
+  }
 }
