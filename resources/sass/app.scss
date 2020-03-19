@@ -1,7 +1,10 @@
-
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy|Montserrat&display=swap');
 
+/* Momentum Scrolling Fix */
+* {
+	-webkit-overflow-scrolling: touch;
+}
 /* Navbar */
 nav {
   background: linear-gradient(45deg, #593196, #6f2f6d);

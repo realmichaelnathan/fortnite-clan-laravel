@@ -148,5 +148,23 @@ function removevote(clanid) {
             </div>
         </div>
     </div>
+    <div class="row my-4 justify-content-center">
+          <div class="col">
+               <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+               <!-- fnclan-horizontal -->
+               <ins class="adsbygoogle"
+                    style="display:flex; justify-content:center"
+                    data-ad-client="ca-pub-9720848360917466"
+                    data-ad-slot="1251108935"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+               <script>
+
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+
+               </script>
+          </div>
+     </div>
 </div>
+
 @endsection
