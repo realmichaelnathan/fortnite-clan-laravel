@@ -55,7 +55,7 @@
                               <p class="card-text p-3 m-0">{{$description}} </p>
                          </div>
                     </div>
-                    <div class="card-header">
+                    <div class="card-header" @if($clan->bumps > 19) style="background: linear-gradient(45deg, #93900d, #ddbb6c);" @endif>
                          <h5 class="card-title text-center m-0">{{$clan->name}}</h5>
                     </div>
                </a>
