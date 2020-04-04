@@ -41,17 +41,17 @@
      <div class="row justify-content-center mt-2">
           @foreach($clans as $clan)
           <?php 
-            $description = str_limit(strip_tags($clan->description), 210);
+            $description = str_limit(strip_tags($clan->description), 190);
             $description = str_replace("&nbsp;", " ", $description);
             ?>
-          <div class="card m-2 card-size p-1" @if($clan->bumps > 4) style="background: white;" @endif>
+          <div class="card card-size p-1" @if($clan->bumps > 4) style="background: white;" @endif>
                <a href="/clan/{{str_replace(' ', '-', $clan->name)}}" class="text-white">
-                    <div class="clan-image-hover-container">
+                    <div class="clan-image-hover-container embed-responsive embed-responsive-16by9">
                          @if($clan->bumps > 9)
                               <div class="active-clan">RECOMMENDED CLAN</div>
                          @endif
-                         <img class="card-img-top clan-thumbnail-image" src="images/{{$clan->picture}}" alt="{{$clan->name}} Fortnite Clan">
-                         <div class="clan-image-hover-div">
+                         <img class="card-img-top clan-thumbnail-image embed-responsive-item" src="images/{{$clan->picture}}" alt="{{$clan->name}} Fortnite Clan">
+                         <div class="clan-image-hover-div embed-responsive-item">
                               <p class="card-text p-3 m-0">{{$description}} </p>
                          </div>
                     </div>

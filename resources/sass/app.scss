@@ -14,7 +14,7 @@ nav {
   }
 }
 .logo {
-  height: 30px;
+  height: 40px;
   width: auto;
 }
 /* End Navbar */
@@ -36,7 +36,8 @@ nav {
 /* End Leaderboard */
 /* Paralax */
 #paralax {
-  height: 500px;
+  height: 400px;
+  padding:0;
   background: linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.10)),
       url("https://fortniteclan.com/images/chapter2fortnite.jpg") center center fixed no-repeat;
   background-size: cover;
@@ -257,7 +258,7 @@ button.social:hover {
   } 
 }
 .clan-image-hover-div {
-  z-index:55;
+  z-index:75;
   background-color:rgba(0, 0, 0, 0.829);
   position:absolute;
   top:0; 
@@ -273,6 +274,11 @@ button.social:hover {
 }
 .card-header {
   background: linear-gradient(45deg, #593196, #6f2f6d);
+  max-height: 49px;
+  h5 {
+    overflow: hidden;
+    max-height: 1em;
+  }
 }
 .card-body {
 background-color: #3f3f3f7a;
@@ -290,8 +296,21 @@ background-color: #3f3f3f7a;
   justify-content: center;
   align-items: center;
   background-color: #e30be4e3 !important;
+  z-index:74;
+  top: 0;
 }
 /* End Clan Card */
+
+/* bootstrap fix */
+.btn-primary {
+  background-color: #FFE300;
+  border-color: #FFE300;
+  color: #000;
+  &:hover {
+    background-color: rgb(255, 230, 0);
+    border-color: rgb(255, 230, 0);
+  }
+}
 
 @media only screen and (max-width: 500px) {
   .card-header h5 {
@@ -321,6 +340,10 @@ background-color: #3f3f3f7a;
       font-size:14px;
   }
   #paralax {
+    p {
+      font-size: 12px;
+      font-weight: bold;
+    }
     .container-fluid {
       padding: 10px 0;
     }
@@ -328,9 +351,49 @@ background-color: #3f3f3f7a;
       font-size:24px;
     }
   }
+  .logo {
+    height: 30px;
+  }
 }
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 400px) {
   footer #links a {
       font-size: 11px;
+  }
+}
+@media (max-width:1200px) and (min-width:700px) {
+  .active-clan {
+    height: 20px;
+    letter-spacing: 1px;
+  }
+  .card-header {
+    max-height: 35px;
+    padding: 0.4rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h5 {
+      font-size: 1.1rem;
+      max-height: 1.4em;
+    }
+  }
+  .card-size {
+    width: 15rem;
+    padding: 0.25rem;
+    margin: 0.25rem;
+  }
+  .clan-image-hover-div {
+    z-index:75;
+    background-color:rgba(0, 0, 0, 0.829);
+    position:absolute;
+    top:0; 
+    left:0;
+    height: 12.63rem;
+    width: 22.45rem; 
+    display:none;
+  }
+  .card-text {
+    font-size: .75rem;
+    font-weight: bold;
+    padding: .55rem !important;
   }
 }
