@@ -1,6 +1,13 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy|Montserrat&display=swap');
 
+// Variables
+@import 'variables';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+//Superhero Bootswatch theme
+@import 'bootswatch';
+
 /* Momentum Scrolling Fix */
 * {
 	-webkit-overflow-scrolling: touch;
@@ -36,17 +43,17 @@ nav {
 /* End Leaderboard */
 /* Paralax */
 #paralax {
-  height: 400px;
+  height: 300px;
   padding:0;
   background: linear-gradient(rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.10)),
-      url("https://fortniteclan.com/images/chapter2fortnite.jpg") center center fixed no-repeat;
+      url("https://fortniteclan.com/images/chapter2fortnite.jpg") center center no-repeat;
   background-size: cover;
   overflow: hidden;
   margin-bottom:0;
   width:100%;
   &.leaderboard {
     background: linear-gradient(rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0.473)),
-        url("https://fortniteclan.com/images/fortniteclanlookingdown1.jpg") center bottom fixed no-repeat;
+        url("https://fortniteclan.com/images/fortniteclanlookingdown1.jpg") center center no-repeat;
         height: 300px;
   }
   h1, h2, h3 {
@@ -76,9 +83,9 @@ html, body {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
-body {
-  background-color: #1E1E1E !important;
-}
+// body {
+//   background-color: #1E1E1E !important;
+// }
 hr {
   height: 3px;
   border:0;
@@ -167,12 +174,7 @@ button.social:hover {
 }
 /* End Social Media */
 /* Clan View */
-.clan-image-container {
-  overflow:hidden;
-  position:relative;
-  justify-content:center;
 
-}
 .bg-image-blurred {
   height: 100%;
   width: 100%;
@@ -212,22 +214,6 @@ button.social:hover {
 .clan-text {
   font-size: 20px;
 }
-.clan-name {
-  padding:5px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(45deg, #593196, #6f2f6d);
-  h1 {
-    color: #fff;
-    font-size: 32px;
-  }
-}
-.clan-image {
-  height: 320px;
-  width: auto;
-  z-index: 10;
-}
 /* End Clan View */
 /* Index Classes */
 .wrapper {
@@ -246,30 +232,11 @@ button.social:hover {
 }
 
 /* Clan Card */
-.card-size {
-  width: 22.57rem;
-  padding: 0.25rem;
-  margin: 0.5rem;
-}
 .clan-image-hover-container {
   overflow: hidden;
   position: relative;
-  &:hover {
-    .clan-image-hover-div {
-      display:flex;
-    }
-  } 
 }
-.clan-image-hover-div {
-  z-index:75;
-  background-color:rgba(0, 0, 0, 0.829);
-  position:absolute;
-  top:0; 
-  left:0;
-  height: 12.63rem;
-  width: 22.45rem; 
-  display:none;
-}
+
 .clan-thumbnail-image {
   z-index:66;
   height: 12.63rem;
@@ -277,9 +244,9 @@ button.social:hover {
 }
 .card-header {
   background: linear-gradient(45deg, #593196, #6f2f6d);
-  max-height: 49px;
-  h5 {
-    overflow: hidden;
+  padding: 8px 0;
+  overflow:hidden;
+  & h5 {
     max-height: 1em;
   }
 }
@@ -298,7 +265,7 @@ background-color: #3f3f3f7a;
   font-size: 13px;
   justify-content: center;
   align-items: center;
-  background-color: #e30be4e3 !important;
+  background-color: #e40be4c4 !important;
   z-index:74;
   top: 0;
 }
@@ -333,6 +300,16 @@ background-color: #3f3f3f7a;
   }
 }
 
+/* View Clan Page */
+
+#votecount {
+  border-radius: 10px 0 0 10px;
+}
+
+#votebutton {
+  border: 0;
+  border-radius: 0 10px 10px 0;
+}
 
 /* bootstrap fix */
 .btn-primary {
@@ -342,10 +319,64 @@ background-color: #3f3f3f7a;
   &:hover {
     background-color: rgb(255, 230, 0);
     border-color: rgb(255, 230, 0);
+    color: #000;
+  }
+  &:focus {
+    background-color: #FFE300;
+    border-color: #FFE300;
+    color: #000;
+    box-shadow: unset;
+  }
+  &:active {
+    background-color: #FFE300;
+    border-color: #FFE300;
+    color: #000;
   }
 }
 
+/* Login Page */
+
+#loginbox {
+  border-radius: 20px;
+  border: 0;
+  background: rgba(0, 0, 0, 0.2);
+  label {
+    padding-left: 5px !important;
+  }
+  input {
+    border-radius: 10px;
+  }
+  .card-body {
+    background: unset;
+  }
+  .btn {
+    border-radius: 10px;
+  }
+}
+
+#loginbox-container {
+  background: linear-gradient(90deg, #593196c4, #6f2f6dab);
+  .alert {
+    border-radius: 10px !important;
+  }
+  min-height: 100vh;
+}
+
+
+
 @media only screen and (max-width: 500px) {
+  #loginbox-container {
+    width: 100%;
+    background: linear-gradient(90deg, #593196, #6f2f6d);
+    padding: 20px 0;
+  }
+  #loginbox {
+    background: unset;
+    img {
+      height: 30px !important;
+      margin-bottom: 20px;
+    }
+  }
   .card-header h5 {
       font-size:18px;
       text-overflow: clip;
@@ -373,12 +404,10 @@ background-color: #3f3f3f7a;
       font-size:14px;
   }
   #paralax {
+    height: 200px !important;
     p {
       font-size: 12px;
       font-weight: bold;
-    }
-    .container-fluid {
-      padding: 10px 0;
     }
     h1, h2, h3, h4 {
       font-size:24px;
@@ -387,10 +416,17 @@ background-color: #3f3f3f7a;
   .logo {
     height: 30px;
   }
+  .display-4 {
+    font-size:30px;
+  }
 }
 @media only screen and (max-width: 400px) {
   footer #links a {
       font-size: 11px;
+  }
+  .carousel-caption {
+    right: 10%;
+    left: 10%;
   }
 }
 
@@ -434,11 +470,7 @@ background-color: #3f3f3f7a;
   }
 
 }
-@media (max-width:1400px) and (min-width:1200px) {
-  .card-size {
-    width: 18.5rem;
-  }
-}
+
 @media (max-width:1200px) and (min-width:700px) {
   .active-clan {
     height: 20px;
@@ -455,24 +487,5 @@ background-color: #3f3f3f7a;
       max-height: 1.4em;
     }
   }
-  .card-size {
-    width: 15rem;
-    padding: 0.25rem;
-    margin: 0.25rem;
-  }
-  .clan-image-hover-div {
-    z-index:75;
-    background-color:rgba(0, 0, 0, 0.829);
-    position:absolute;
-    top:0; 
-    left:0;
-    height: 12.63rem;
-    width: 22.45rem; 
-    display:none;
-  }
-  .card-text {
-    font-size: .75rem;
-    font-weight: bold;
-    padding: .55rem !important;
-  }
+
 }
