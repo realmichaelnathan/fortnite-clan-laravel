@@ -1,9 +1,9 @@
 @extends('layout') 
 @section('title', 'Add your clan!') 
 @section('content')
-<div class="container mt-2 mb-2">
-    <div class="row justify-content-center">
-        <div class="col-11 col-sm-7">
+
+    <div class="row justify-content-center mb-2">
+        <div class="col-12 col-lg-10">
 
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
@@ -68,7 +68,7 @@
             </form>
         </div>
     </div>
-</div>
+
 @endsection
  
 @section('headers')

@@ -76,6 +76,9 @@ html, body {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+body {
+  background-color: #1E1E1E !important;
+}
 hr {
   height: 3px;
   border:0;
@@ -301,6 +304,36 @@ background-color: #3f3f3f7a;
 }
 /* End Clan Card */
 
+
+/* Notification Stuff */
+#notification {
+  padding-left: 2px;
+  width: 100%;
+  height: 42px;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  background: #333333;
+  color: #fff;
+  font-weight: bold;
+  a.btn-primary {
+    border-radius: 25px;
+    font-family: 'sans serif';
+    font-weight: bold;
+    margin-left: 20px;
+    font-size: 11px;
+  }
+  .social {
+    height: 35px;
+    width: 35px;
+    font-size: 16px;
+  }
+  .message {
+
+  }
+}
+
+
 /* bootstrap fix */
 .btn-primary {
   background-color: #FFE300;
@@ -358,6 +391,52 @@ background-color: #3f3f3f7a;
 @media only screen and (max-width: 400px) {
   footer #links a {
       font-size: 11px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #notification {
+    height: 52px;
+    .social {
+      height: 45px;
+      width: 45px;
+      font-size: 22px;
+    }
+  }
+  .logomaker > div {
+    flex-direction:column-reverse;
+  }
+  #canvas {
+    padding: 5px 0 35px 0;
+    button {
+      width:100%;
+      bottom: 0 !important;
+      padding: 0.1rem;
+      font-size: 1rem;
+    }
+  }
+  #app {
+    z-index:99;
+    height: unset;
+  }
+  .logomaker {
+    position: unset;
+    overflow: unset;
+    min-height: 100%;
+    z-index:99;
+    top: 0;
+  }
+  #logoImage {
+    img, #logo {
+      width: 365px;
+      height: 205px;
+    }
+  }
+
+}
+@media (max-width:1400px) and (min-width:1200px) {
+  .card-size {
+    width: 18.5rem;
   }
 }
 @media (max-width:1200px) and (min-width:700px) {

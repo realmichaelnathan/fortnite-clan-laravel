@@ -3,24 +3,26 @@
 @section('title', 'Verify your account!')
 
 @section('content')
-<div class="container mt-3">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
 
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
-
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
+<div class="row justify-content-center mt-3">
+    <div class="col-md-8">
+        <h2 class="text-center">{{ __('Verify Your Email Address') }}</h2>
+        <p>
+            @if(session('resent'))
+                <div class="alert alert-success" role="alert">
+                    {{ __('A fresh verification link has been sent to your email address.') }}
                 </div>
+            @endif
+
+            {{ __('Before proceeding, please check your email for a verification link.') }}
+            If you did not receive the email please click the button below to request a new email.
+            <br />
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-primary" href="{{ route('verification.resend') }}">Request New
+                    Verification Email</a>
             </div>
-        </div>
+        </p>
     </div>
 </div>
+
 @endsection

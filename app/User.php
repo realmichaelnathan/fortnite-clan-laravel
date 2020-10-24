@@ -31,4 +31,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function clan() {
         return $this->hasOne('App\Clans', 'userid');
     }
+
+    public function votes() {
+        return $this->hasOne('App\Votes', 'userid');
+    }
 }

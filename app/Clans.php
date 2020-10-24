@@ -34,4 +34,8 @@ class Clans extends Model
         return $this->belongsTo('App\User', 'userid');
     }
 
+    public function votes() {
+        return $this->hasMany('App\Votes', 'clanid')->with('user');
+    }
+
 }

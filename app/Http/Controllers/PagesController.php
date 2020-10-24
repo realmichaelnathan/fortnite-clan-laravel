@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Clans;
 use App\Votes;
+use App\User;
 use Auth;
 
 class PagesController extends Controller
@@ -13,15 +14,27 @@ class PagesController extends Controller
     //
 
      public function index() {
-          $clans = Clans::where('active', '!=', 0)
-          ->where('discord', '!=', NULL)
-          ->orWhere('instagram', '!=', NULL)
-          ->orWhere('twitter', '!=', NULL)
-          ->orWhere('youtube', '!=', NULL)
-          ->orderBy('bumped_at', 'desc')
-          ->simplePaginate(20);
+          $news = json_decode(file_get_contents("https://fortnite-api.com/v2/news/br"));
 
-          return view('newhome', ['clans' => $clans]);
+          $clans = Clans::where('active', 1)
+          ->orderBy('bumped_at', 'desc')
+          ->paginate(24);
+
+          $newest_clans = Clans::where('active', 1)
+          ->orderBy('created_at', 'desc')
+          ->take(4)->get();
+
+          $votes = Votes::selectRaw('count(*) as votes, clanid')->groupBy('clanid')->orderBy('votes', 'desc')->take(4);
+          $top_voted_clans = Clans::joinSub($votes, 'votes', function ($join) {
+                    $join->on('clans.id', '=', 'votes.clanid');
+               })->whereActive(1)->get();
+
+          return view('newhome', [
+               'news' => $news,
+               'clans' => $clans,
+               'top_voted_clans' => $top_voted_clans,
+               'newest_clans' => $newest_clans
+               ]);
      }
 
      public function leaderboard(Request $request) {
@@ -43,10 +56,14 @@ class PagesController extends Controller
     }
 
      public function clan_dashboard() {
-          $date = Carbon::today()->subDays(7);
           $clan = Clans::whereUserid(Auth::id())->first();
           $clan->bumped_at = Carbon::parse($clan->bumped_at)->diffForHumans();
 
           return view('clandashboard', ['clan' => $clan]);
      }
+
+     public function viewuser($id, $name) {
+          $user = User::find($id);
+          return view('viewuser', compact('user'));
+      }
 }

@@ -6,7 +6,8 @@
 
 <div class="container mt-2">
     <div class="row justify-content-center">
-        <div class="col-11 col-sm-7">
+        <div class="col-11 col-sm-10 col-md-7">
+            <a class="btn btn-primary ml-0 ml-sm-auto d-block my-3" style="width:200px;" href="/user/{{$user->id}}/{{str_replace([' ', '/'], '-', $user->name)}}" class="stretched-link">View Profile</a>
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     <div class="alert alert-danger">
