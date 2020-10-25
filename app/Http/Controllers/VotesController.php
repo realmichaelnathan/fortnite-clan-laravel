@@ -27,19 +27,19 @@ class VotesController extends Controller
             $newvote->save();
             
             // Discord Webhook
-          $url = "https://discordapp.com/api/webhooks/764923778592669756/usbnWQVafNPIBV--bYi8eO0ltQZTU4Sbw59NN006QvHkIZZ0vArObs_mlqgedK5MQF5W";
-          $data = [
-               'content' => '**' . Auth::user()->name . '** just voted for ' . '**' . Clans::find($clan)->name . '**.' ,
-          ];
-          $options = array(
-               'http' => array(
-                    'header'  => "Content-type: application/json",
-                    'method'  => 'POST',
-                    'content' => json_encode($data)
-               )
-               );
-          $context  = stream_context_create($options);
-          file_get_contents($url, false, $context);
+            $url = env('DISCORD_WEBHOOK');
+            $data = [
+                'content' => '**' . Auth::user()->name . '** just voted for ' . '**' . Clans::find($clan)->name . '**.' ,
+            ];
+            $options = array(
+                'http' => array(
+                        'header'  => "Content-type: application/json",
+                        'method'  => 'POST',
+                        'content' => json_encode($data)
+                )
+                );
+            $context  = stream_context_create($options);
+            file_get_contents($url, false, $context);
           // End Discord Webhook
 			
             $newtotalvotes = Votes::whereClanid($clan)->count();
@@ -66,6 +66,23 @@ class VotesController extends Controller
             $vote = Votes::whereUserid($userid);
             $vote->delete();
             $newtotalvotes = Votes::whereClanid($clan)->count();
+
+            // Discord Webhook
+            $url = env('DISCORD_WEBHOOK');
+            $data = [
+                'content' => '**' . Auth::user()->name . '** just removed their vote for ' . '**' . Clans::find($clan)->name . '**.' ,
+            ];
+            $options = array(
+                'http' => array(
+                        'header'  => "Content-type: application/json",
+                        'method'  => 'POST',
+                        'content' => json_encode($data)
+                )
+                );
+            $context  = stream_context_create($options);
+            file_get_contents($url, false, $context);
+            // End Discord Webhook
+
             return response()->json([
                 'status' => 'deleted',
                 'votes' => $newtotalvotes
