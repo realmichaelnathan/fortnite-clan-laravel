@@ -27,19 +27,19 @@ class VotesController extends Controller
             $newvote->save();
             
             // Discord Webhook
-            $url = env('DISCORD_WEBHOOK');
-            $data = [
-                'content' => '**' . Auth::user()->name . '** just voted for ' . '**' . Clans::find($clan)->name . '**.' ,
-            ];
-            $options = array(
-                'http' => array(
-                        'header'  => "Content-type: application/json",
-                        'method'  => 'POST',
-                        'content' => json_encode($data)
-                )
-                );
-            $context  = stream_context_create($options);
-            file_get_contents($url, false, $context);
+            // $url = env('DISCORD_WEBHOOK');
+            // $data = [
+            //     'content' => '**' . Auth::user()->name . '** just voted for ' . '**' . Clans::find($clan)->name . '**.' ,
+            // ];
+            // $options = array(
+            //     'http' => array(
+            //             'header'  => "Content-type: application/json",
+            //             'method'  => 'POST',
+            //             'content' => json_encode($data)
+            //     )
+            //     );
+            // $context  = stream_context_create($options);
+            // file_get_contents($url, false, $context);
           // End Discord Webhook
 			
             $newtotalvotes = Votes::whereClanid($clan)->count();
@@ -68,19 +68,19 @@ class VotesController extends Controller
             $newtotalvotes = Votes::whereClanid($clan)->count();
 
             // Discord Webhook
-            $url = env('DISCORD_WEBHOOK');
-            $data = [
-                'content' => '**' . Auth::user()->name . '** just removed their vote for ' . '**' . Clans::find($clan)->name . '**.' ,
-            ];
-            $options = array(
-                'http' => array(
-                        'header'  => "Content-type: application/json",
-                        'method'  => 'POST',
-                        'content' => json_encode($data)
-                )
-                );
-            $context  = stream_context_create($options);
-            file_get_contents($url, false, $context);
+            // $url = env('DISCORD_WEBHOOK');
+            // $data = [
+            //     'content' => '**' . Auth::user()->name . '** just removed their vote for ' . '**' . Clans::find($clan)->name . '**.' ,
+            // ];
+            // $options = array(
+            //     'http' => array(
+            //             'header'  => "Content-type: application/json",
+            //             'method'  => 'POST',
+            //             'content' => json_encode($data)
+            //     )
+            //     );
+            // $context  = stream_context_create($options);
+            // file_get_contents($url, false, $context);
             // End Discord Webhook
 
             return response()->json([
