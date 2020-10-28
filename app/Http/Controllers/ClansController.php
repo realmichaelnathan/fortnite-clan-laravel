@@ -49,27 +49,27 @@ class ClansController extends Controller
               $clan->save();
 
                // Discord Webhook
-               // $url = env('DISCORD_WEBHOOK');
-               // $data = [
-               //      'content' => '**' . Auth::user()->name . '** just bumped ' . '**' . $clan->name . '**.' ,
-               //      'embeds' => [
-               //           [
-               //                'title' => $clan->name,
-               //                'description' => str_limit(strip_tags($clan->description), 155),
-               //                'url' => 'https://fortniteclan.com/clan/' . $clan->slug,
-               //                'thumbnail' => [ 'url' => 'https://fortniteclan.com/images/' . $clan->picture]
-               //           ]
-               //      ]
-               // ];
-               // $options = array(
-               //      'http' => array(
-               //           'header'  => "Content-type: application/json",
-               //           'method'  => 'POST',
-               //           'content' => json_encode($data)
-               //      )
-               //      );
-               // $context  = stream_context_create($options);
-               // file_get_contents($url, false, $context);
+               $url = env('DISCORD_WEBHOOK');
+               $data = [
+                    'content' => '**' . Auth::user()->name . '** just bumped ' . '**' . $clan->name . '**.' ,
+                    'embeds' => [
+                         [
+                              'title' => $clan->name,
+                              'description' => str_limit(strip_tags($clan->description), 155),
+                              'url' => 'https://fortniteclan.com/clan/' . $clan->slug,
+                              'thumbnail' => [ 'url' => 'https://fortniteclan.com/images/' . $clan->picture]
+                         ]
+                    ]
+               ];
+               $options = array(
+                    'http' => array(
+                         'header'  => "Content-type: application/json",
+                         'method'  => 'POST',
+                         'content' => json_encode($data)
+                    )
+                    );
+               $context  = stream_context_create($options);
+               file_get_contents($url, false, $context);
                // End Discord Webhook
 
               return response()->json([
@@ -342,27 +342,27 @@ class ClansController extends Controller
 
           $clan->save();
           // Discord Webhook
-          // $url = env('DISCORD_WEBHOOK');
-          // $data = [
-          //      'content' => '**' . Auth::user()->name . '** just created ' . '**' . $clan->name . '**.' ,
-          //      'embeds' => [
-          //           [
-          //                'title' => $clan->name,
-          //                'description' => str_limit(strip_tags($clan->description), 155),
-          //                'url' => 'https://fortniteclan.com/clan/' . $clan->slug,
-          //                'thumbnail' => [ 'url' => 'https://fortniteclan.com/images/' . $clan->picture]
-          //           ]
-          //      ]
-          // ];
-          // $options = array(
-          //      'http' => array(
-          //           'header'  => "Content-type: application/json",
-          //           'method'  => 'POST',
-          //           'content' => json_encode($data)
-          //      )
-          //      );
-          // $context  = stream_context_create($options);
-          // file_get_contents($url, false, $context);
+          $url = env('DISCORD_WEBHOOK');
+          $data = [
+               'content' => '**' . Auth::user()->name . '** just created ' . '**' . $clan->name . '**.' ,
+               'embeds' => [
+                    [
+                         'title' => $clan->name,
+                         'description' => str_limit(strip_tags($clan->description), 155),
+                         'url' => 'https://fortniteclan.com/clan/' . $clan->slug,
+                         'thumbnail' => [ 'url' => 'https://fortniteclan.com/images/' . $clan->picture]
+                    ]
+               ]
+          ];
+          $options = array(
+               'http' => array(
+                    'header'  => "Content-type: application/json",
+                    'method'  => 'POST',
+                    'content' => json_encode($data)
+               )
+               );
+          $context  = stream_context_create($options);
+          file_get_contents($url, false, $context);
           // End Discord Webhook
           return redirect('/editclan');
 
