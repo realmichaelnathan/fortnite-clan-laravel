@@ -75,11 +75,11 @@
                             </div>
 
                         </div>
-                        @if(env('GOOGLE_RECAPTCHA_KEY'))
-                            <div class="row justify-content-center mb-2 g-recaptcha"
-                                data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
-                            </div>
-                        @endif
+                        
+                        <div class="row justify-content-center mb-2 g-recaptcha"
+                            data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
+                        </div>
+                        
                         <div class="form-group row justify-content-center mb-0">
 
                             <button type="submit" class="btn btn-primary btn-block mt-3">
