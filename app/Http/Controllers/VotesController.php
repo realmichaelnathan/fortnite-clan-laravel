@@ -27,7 +27,7 @@ class VotesController extends Controller
             $newvote->save();
             
             // Discord Webhook
-            $url = env('DISCORD_WEBHOOK');
+            $url = \Config::get('services.discord.webhook');
             $data = [
                 'content' => '**' . Auth::user()->name . '** just voted for ' . '**' . Clans::find($clan)->name . '**.' ,
             ];
@@ -68,7 +68,7 @@ class VotesController extends Controller
             $newtotalvotes = Votes::whereClanid($clan)->count();
 
             // Discord Webhook
-            $url = env('DISCORD_WEBHOOK');
+            $url = \Config::get('services.discord.webhook');
             $data = [
                 'content' => '**' . Auth::user()->name . '** just removed their vote for ' . '**' . Clans::find($clan)->name . '**.' ,
             ];

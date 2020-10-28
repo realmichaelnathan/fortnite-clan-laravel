@@ -49,7 +49,7 @@ class ClansController extends Controller
               $clan->save();
 
                // Discord Webhook
-               $url = env('DISCORD_WEBHOOK');
+               $url = \Config::get('services.discord.webhook');
                $data = [
                     'content' => '**' . Auth::user()->name . '** just bumped ' . '**' . $clan->name . '**.' ,
                     'embeds' => [
@@ -342,7 +342,7 @@ class ClansController extends Controller
 
           $clan->save();
           // Discord Webhook
-          $url = env('DISCORD_WEBHOOK');
+          $url = \Config::get('services.discord.webhook');
           $data = [
                'content' => '**' . Auth::user()->name . '** just created ' . '**' . $clan->name . '**.' ,
                'embeds' => [
@@ -364,6 +364,7 @@ class ClansController extends Controller
           $context  = stream_context_create($options);
           file_get_contents($url, false, $context);
           // End Discord Webhook
+
           return redirect('/editclan');
 
      }

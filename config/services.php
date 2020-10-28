@@ -29,6 +29,9 @@ return [
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),
     ],
+    'discord' => [
+        'webhook' => env('DISCORD_WEBHOOK')
+    ],
 
     'stripe' => [
         'model' => App\User::class,
