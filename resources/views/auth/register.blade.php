@@ -77,7 +77,7 @@
                         </div>
                         
                         <div class="row justify-content-center mb-2 g-recaptcha"
-                            data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
+                            data-sitekey="{{  \Config::get('services.google.sitekey') }}">
                         </div>
                         
                         <div class="form-group row justify-content-center mb-0">

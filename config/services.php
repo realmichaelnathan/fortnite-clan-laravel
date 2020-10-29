@@ -32,6 +32,9 @@ return [
     'discord' => [
         'webhook' => env('DISCORD_WEBHOOK')
     ],
+    'google' => [
+        'sitekey' => env('GOOGLE_RECAPTCHA_KEY')
+    ],
 
     'stripe' => [
         'model' => App\User::class,
