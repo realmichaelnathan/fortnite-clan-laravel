@@ -12,7 +12,7 @@
 
 	<meta name="description" content="Fortnite Clans! Find Clans, Teams, and Players for the popular game Fortnite. The best place for fortnite clans, teams, and players to connect.">
 
-	<meta name="keywords" content="Fortnite, Fortnite Clan, Fortnite Team, Fortnite Teams, Fortnite Clans, Team, Teams, Esports, Clan, Clans, Fort Nite, Fort Night, Fortnight">
+	<meta name="keywords" content="Fortnite, Fortnite Clan, Fortnite Team, Fortnite Teams, Fortnite Clans, Team, Teams, Esports, Clan, Clans, Fort Nite, Fort Night, Fortnight. Fornite Clans, Fornite">
 
 	<meta name="robots" content="index, follow">
 
@@ -35,8 +35,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 	@yield('headers')
-
-	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 
@@ -61,8 +59,6 @@
 		  "address": "",
 
 		  "sameAs": [
-
-			"https://www.facebook.com/fortniteclancom",
 
 			"https://twitter.com/fortniteclancom",
 

@@ -13,7 +13,7 @@
 
                         <div class="d-flex flex-column align-items-center">
                             <h1 class="text-center d-block d-sm-none">{{$user->name}}</h1>
-                            <div class="rounded-pill" style="width:200px; height:200px; background: #3f3f3f7a url('https://fortniteclan.com/images/users/{{$user->profilepic}}'); background-size: auto 200px; background-position: center;"></div>
+                            <div class="rounded-pill" style="border:5px solid rgba(255,255,255,0.4); width:200px; height:200px; background: #3f3f3f7a url('https://fortniteclan.com/images/users/{{$user->profilepic}}'); background-size: auto 200px; background-position: center;"></div>
                            
                                 @if(($user->clan) && ($user->votes)  && ($user->clan->id == $user->votes->clan->id))
                                 <span class="badge badge-primary p-2 mt-2" style="">OWNER</span>
