@@ -16,15 +16,15 @@ Route::get('/', 'PagesController@index');
 Route::get('/leaderboard', 'PagesController@leaderboard');
 
 Route::get('/logomaker', function() {
-    return view('logomaker');
+    return redirect('/');
 });
+
 Route::get('/clan/{name}','ClansController@index');
 Route::get('/user/{id}/{name}','PagesController@viewuser');
 
 // Clan Routes
 Route::get('/editclan',  'ClansController@show')->middleware('auth');
 Route::get('/addclan',   'ClansController@create')->middleware('auth','verified');
-// Route::get('/addclan',   'ClansController@create')->middleware('auth');
 Route::get('/clan-dashboard','PagesController@clan_dashboard')->middleware('auth');
 
 Route::post('/addclan', 'ClansController@store');
@@ -48,16 +48,5 @@ Route::get('/stats', 'StatsController@stats');
 
 //User account routes
 Route::get('/myaccount', 'UserController@edit')->middleware('verified');
-// Route::get('/myaccount', 'UserController@edit');
 Route::patch('/myaccount', 'UserController@update');
 Route::delete('/myaccount', 'UserController@destroy');
-
-
-
-
-// Dev routes
-
-Route::get('/verify-template', function() {
-
-    return view('auth.verify');
-});
