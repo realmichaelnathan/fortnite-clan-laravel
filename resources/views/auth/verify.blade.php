@@ -17,10 +17,13 @@
             {{ __('Before proceeding, please check your email for a verification link.') }}
             If you did not receive the email please click the button below to request a new email.
             <br />
-            <div class="d-flex justify-content-center">
-                <a class="btn btn-primary" href="{{ route('verification.resend') }}">Request New
-                    Verification Email</a>
-            </div>
+            <form class="d-flex justify-content-center mt-2" method="POST" action="{{ route('verification.resend') }}">
+                @csrf
+            
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Request New Verification Email') }}
+                </button>
+            </form>
         </p>
     </div>
 </div>

@@ -159,7 +159,7 @@
 
 						@if(!Auth::user()->hasVerifiedEmail())
 
-							<a href="/email/verify"> <button class="btn btn-info my-2 my-sm-0" type="submit">Verify Account</button></a>
+							<a href="/email/verify"> <button class="btn btn-info my-2 my-sm-0 mr-2" type="submit">Verify Account</button></a>
 
 						@endif
 
@@ -169,7 +169,7 @@
 
 				@if(Auth::user())
 
-				<a href="/logout"> <button class="btn btn-warning my-2 my-sm-0" type="submit">Logout <i class="fas fa-sign-out-alt"></i></button></a>
+				<a href="/logout"> <button class="btn btn-warning my-2 my-sm-0" type="submit">Logout</button></a>
 
 				@else
 
