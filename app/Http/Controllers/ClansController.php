@@ -8,7 +8,7 @@ use App\Clans;
 
 use App\Votes;
 
-use Illuminate\Http\Request;
+use Request;
 
 use Auth;
 
