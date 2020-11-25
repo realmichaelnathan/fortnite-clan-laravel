@@ -8,7 +8,7 @@ use App\Clans;
 
 use App\Votes;
 
-use Request;
+use Illuminate\Http\Request;
 
 use Auth;
 
@@ -228,9 +228,7 @@ class ClansController extends Controller
 
 		 //Check to see if an image was uploaded.
 
-		    if (Request::file('image')->isValid()) {
-
-			      $file = Request::file('image');
+			      $file = $request->file('image');
 
 			      $destination = 'images/';
 
@@ -239,10 +237,6 @@ class ClansController extends Controller
 			      $mainFilename = str_slug($clan->name);
 
 			      $file->move($destination, $mainFilename.".".$ext);
-
-
-
-  	 		}
 
 		   $clan->picture = $mainFilename.".".$ext;
 
@@ -290,53 +284,40 @@ class ClansController extends Controller
                $clan->slug = $slug;
           }
 
-         $clan->description = $request->description;
+          $clan->description = $request->description;
 
-         $clan->discord = $request->discord;
+          $clan->discord = $request->discord;
 
-         $clan->instagram = $request->instagram;
+          $clan->instagram = $request->instagram;
 
-         $clan->twitter = $request->twitter;
+          $clan->twitter = $request->twitter;
 
-         $clan->youtube = $request->youtube;
+          $clan->youtube = $request->youtube;
 
-         $clan->userid = Auth::id();
+          $clan->userid = Auth::id();
 
 
 
          //Lets handle the image upload here
 
-         if ($request->hasFile('image')) {
+          if ($request->hasFile('image')) {
 
+               $this->validate($request, [ 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:512',]);
 
+               //Check to see if an image was uploaded.
 
-              $this->validate($request, [ 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:512',]);
+               $file = $request->file('image');
 
+               $destination = 'images/';
 
+               $ext= $file->getClientOriginalExtension();
 
-           //Check to see if an image was uploaded.
+               $mainFilename = str_slug($clan->name);
 
-              if (Request::file('image')->isValid()) {
+               $file->move($destination, $mainFilename.".".$ext);
 
-
-
-                     $file = Request::file('image');
-
-                     $destination = 'images/';
-
-                     $ext= $file->getClientOriginalExtension();
-
-                     $mainFilename = str_slug($clan->name);
-
-                     $file->move($destination, $mainFilename.".".$ext);
-
-
-
-               }
-
-             $clan->picture = $mainFilename.".".$ext;
-
-          } 
+               $clan->picture = $mainFilename.".".$ext;
+          }    
 
           $clan->save();
           // Discord Webhook
