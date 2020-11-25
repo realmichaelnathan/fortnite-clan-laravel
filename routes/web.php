@@ -50,3 +50,8 @@ Route::get('/stats', 'StatsController@stats');
 Route::get('/myaccount', 'UserController@edit')->middleware('verified');
 Route::patch('/myaccount', 'UserController@update');
 Route::delete('/myaccount', 'UserController@destroy');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
