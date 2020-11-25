@@ -12,8 +12,6 @@ use Illuminate\Http\Request;
 
 use Auth;
 
-use Illuminate\Support\Facades\Input;
-
 use Validator;
 
 use Illuminate\Validation\Rule;
@@ -230,9 +228,9 @@ class ClansController extends Controller
 
 		 //Check to see if an image was uploaded.
 
-		    if (Input::file('image')->isValid()) {
+		    if (Request::file('image')->isValid()) {
 
-			      $file = Input::file('image');
+			      $file = Request::file('image');
 
 			      $destination = 'images/';
 
@@ -318,11 +316,11 @@ class ClansController extends Controller
 
            //Check to see if an image was uploaded.
 
-              if (Input::file('image')->isValid()) {
+              if (Request::file('image')->isValid()) {
 
 
 
-                     $file = Input::file('image');
+                     $file = Request::file('image');
 
                      $destination = 'images/';
 
