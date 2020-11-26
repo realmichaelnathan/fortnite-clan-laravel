@@ -24,10 +24,10 @@ class PagesController extends Controller
           ->orderBy('created_at', 'desc')
           ->take(4)->get();
 
-          $votes = Votes::selectRaw('count(*) as votes, clanid')->groupBy('clanid')->orderBy('votes', 'desc')->take(4);
+          $votes = Votes::selectRaw('count(*) as votes, clanid')->groupBy('clanid')->orderBy('votes', 'desc')->take(10);
           $top_voted_clans = Clans::joinSub($votes, 'votes', function ($join) {
                     $join->on('clans.id', '=', 'votes.clanid');
-               })->whereActive(1)->get();
+               })->whereActive(1)->take(4)->get();
 
           return view('newhome', [
                'news' => $news,
