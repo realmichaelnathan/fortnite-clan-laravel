@@ -88,7 +88,7 @@
                                 </label>
                                 @endforeach
                             </div>
-                            <small class="form-test mt-1 text-muted d-block">Select the regions your clan plays on.</small>
+                            <small class="form-test mt-1 text-muted d-block">Select the platforms your clan plays on.</small>
                         </div>
                     </div>
                 </div>

@@ -135,8 +135,12 @@ class ClansController extends Controller
                return redirect('/editclan');
 
           } else {
-
-               return view('addclan');
+               $regions = Region::all();
+               $platforms = Platform::all();
+               return view('addclan',[
+                    'regions' => $regions,
+                    'platforms' => $platforms
+               ]);
 
           }
 
@@ -274,7 +278,7 @@ class ClansController extends Controller
 
                'twitter' => 'nullable|url',
 
-			   'youtube' => 'nullable|url'
+			'youtube' => 'nullable|url'
 
           ]);
 
@@ -326,6 +330,9 @@ class ClansController extends Controller
           }    
 
           $clan->save();
+          $clan->region()->sync($request->regions);
+          $clan->platform()->sync($request->platforms);
+          
           // Discord Webhook
           $url = \Config::get('services.discord.webhook');
           $data = [

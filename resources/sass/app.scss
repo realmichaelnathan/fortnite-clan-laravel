@@ -173,7 +173,42 @@ button.social:hover {
   background: #c4302b;
 }
 /* End Social Media */
+
+/* Colors */
+.xbox {
+  background: #0e7a0d;
+}
+.playstation {
+  background: #003496;
+}
+.switch {
+  background: #e4000f;
+}
+.pc {
+  background: #c70053;
+}
+.mobile {
+  background: #dbb63d;
+}
+
 /* Clan View */
+.tag {
+  height: 50px;
+  width: 50px;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  color: white;
+  font-weight:bold;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 10px;
+  margin: 5px 5px 0 0;
+  &.platform {
+    font-size: 25px;
+  }
+}
 .region {
   height:42px !important;
   font-size: 10px;

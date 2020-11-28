@@ -94,27 +94,55 @@ function removevote(clanid) {
     </div>
 </div>
 
-<div class="row justify-content-center mt-3 px-1">
-    <div class="col-12 @if($clan->votes->count() > 0) col-lg-8 @endif d-flex flex-column mt-1">
+<div class="row justify-content-center justify-content-lg-start mt-3 px-1">
+    <div class="col-12 col-lg-8 d-flex flex-column mt-1">
         <h3 class="">About {{$clan->name}}</h3>
         <p class="float-left clan-text">
             {!!$clan->description!!}
         </p>
     </div>
-@if($clan->votes->count() > 0)
     <div class="col-12 col-lg-4">
-        <h3>Clan Supporters</h3>
-        <div class="row px-3">
-            @foreach($clan->votes as $vote)
-            <div class="card flex-row m-1 p-0" style="font-size:12px; align-items:center; border-radius: 10px; border:0;">
-                <div style="width:30px; height:30px; background: #3f3f3f7a url('../images/users/{{$vote->user->profilepic}}'); background-size: auto 30px; background-position: center; border-radius: 10px 0 0 10px;"></div>
-                <div class="d-flex justify-content-center flex-fill" style="padding: 0 10px; min-width:70px;">{{str_limit($vote->user->name, 20)}}</div> 
-                <a href="/user/{{$vote->user->id}}/{{str_replace([' ', '/'], '-', $vote->user->name)}}" class="stretched-link"></a>  
+        @if($clan->region->count() > 0)
+        <div>
+            <h3>Regions</h3>
+            <div class="row px-3">
+                @foreach($clan->region as $region)
+                    <div class="tag bg-primary">
+                        {{$region->name}}
+                    </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
+        @endif
+        @if($clan->platform->count() > 0)
+        <div class="mt-3">
+            <h3>Platforms</h3>
+            <div class="row px-3">
+                @foreach($clan->platform as $platform)
+                    <div class="tag platform {{$platform->name}}">
+                        <i class="{{$platform->icon}}"></i>
+                        
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
+        @if($clan->votes->count() > 0)
+        <div class="mt-3">
+            <h3>Clan Supporters</h3>
+            <div class="row px-3">
+                @foreach($clan->votes as $vote)
+                <div class="card flex-row m-1 p-0" style="font-size:12px; align-items:center; border-radius: 10px; border:0;">
+                    <div style="width:30px; height:30px; background: #3f3f3f7a url('../images/users/{{$vote->user->profilepic}}'); background-size: auto 30px; background-position: center; border-radius: 10px 0 0 10px;"></div>
+                    <div class="d-flex justify-content-center flex-fill" style="padding: 0 10px; min-width:70px;">{{str_limit($vote->user->name, 20)}}</div> 
+                    <a href="/user/{{$vote->user->id}}/{{str_replace([' ', '/'], '-', $vote->user->name)}}" class="stretched-link"></a>  
+                </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
     </div>
-@endif
+
 </div>
 <div class="row my-4 justify-content-center">
     <div class="col">

@@ -2,7 +2,7 @@
 @section('title', 'Add your clan!') 
 @section('content')
 
-    <div class="row justify-content-center mb-2">
+    <div class="row mt-2 justify-content-center mb-2">
         <div class="col-12 col-lg-10">
 
             @if ($errors->any())
@@ -15,11 +15,6 @@
 
             <form action="/addclan" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="alert alert-secondary" role="alert">
-                    <h4 class="alert-heading">Want More People To Notice Your Clan?</h4>
-                    <p>A complete description with details about the clan such as the requirements to join and who to contact if someone is interested 
-                        is a good start! Listing Clan Social Media accounts help you take your exposure to the next level!</p>
-                </div>
                 <div class="form-group">
                     <label>Name</label>
                     <input type="Text" class="form-control" name="name" />
@@ -33,16 +28,36 @@
                 <div class="form-group">
                     <label for="image-upload">Clan Image</label>
                     <input type="file" class="form-control-file" id="image" name="image">
-                    <small class="form-test text-muted">Please choose an image that is 16:9 in ratio (The larger the better.)</small>
+                    <small class="form-test text-muted">Please choose an image that is 16:9 in ratio.</small>
                 </div>
-                <div class="alert alert-secondary" role="alert">
-                    <h4 class="alert-heading">Discord Invite Links</h4>
-                    <p class="mb-0">
-                        When creating a invite link for your Discord server make sure that the link is not a temporary invite link. 
-                        Links expire by default after 1 day! So make sure to go into the settings and set the link to never expire!
-                    </p>
-                    <hr>
-                    <p class="mb-0">If you do not have an account then leave the text field blank :)</p>
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <label class="d-block">Regions</label>
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                @foreach($regions as $region)
+                                <label class="btn btn-outline-primary region">
+                                    <input type="checkbox" name="regions[]" value="{{$region->id}}">{{$region->name}}
+                                </label>
+                                @endforeach
+                            </div>
+                            <small class="form-test mt-1 text-muted d-block">Select the regions your clan plays on.</small>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <label class="d-block">Platforms</label>
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                @foreach($platforms as $platform)
+                                <label class="btn btn-outline-secondary">
+                                    <input type="checkbox" name="platforms[]" value="{{$platform->id}}">
+                                    <i class="{{$platform->icon}}"></i>
+                                </label>
+                                @endforeach
+                            </div>
+                            <small class="form-test mt-1 text-muted d-block">Select the platforms your clan plays on.</small>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Discord</label>
@@ -88,7 +103,6 @@
                    // [groupName, [list of button]]
                    ['style', ['bold', 'italic', 'underline', 'clear']],
                    ['fontsize', ['fontsize']],
-                   ['color', ['color']],
                    ['para', ['ul', 'ol', 'paragraph']]
               ],
               disableDragAndDrop: true
