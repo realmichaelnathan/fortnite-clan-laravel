@@ -14,7 +14,7 @@ class PagesController extends Controller
     //
 
      public function index() {
-          $news = json_decode(file_get_contents("https://fortnite-api.com/v2/news/br"));
+          // $news = json_decode(file_get_contents("https://fortnite-api.com/v2/news/br"));
 
           $clans = Clans::where('active', 1)
           ->orderBy('bumped_at', 'desc')
@@ -30,7 +30,7 @@ class PagesController extends Controller
                })->whereActive(1)->take(4)->get();
 
           return view('newhome', [
-               'news' => $news,
+               // 'news' => $news,
                'clans' => $clans,
                'top_voted_clans' => $top_voted_clans,
                'newest_clans' => $newest_clans
