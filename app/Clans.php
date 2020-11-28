@@ -15,17 +15,6 @@ class Clans extends Model
     }
 
     // Expects a date, returns all rows with a created date greater than the date provided.
-    public function votes_by_day($date) {
-        return false;
-    }
-
-    public function total_views() {
-        $old_views = $this->hasMany('App\Views', 'clanid')->sum('views');
-        $current_views = $this->views;
-        return $old_views + $current_views;
-    }
-
-    // Expects a date, returns all rows with a created date greater than the date provided.
     public function views_by_day($date) {
         return $this->hasMany('App\Views', 'clanid')->where('created_at','>',$date)->groupBy('date')->orderBy('date', 'desc');
     }
@@ -36,6 +25,14 @@ class Clans extends Model
 
     public function votes() {
         return $this->hasMany('App\Votes', 'clanid')->with('user');
+    }
+
+    public function platform() {
+        return $this->belongsToMany('App\Platform');
+    }
+
+    public function region() {
+        return $this->belongsToMany('App\Region');
     }
 
 }

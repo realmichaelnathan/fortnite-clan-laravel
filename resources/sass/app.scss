@@ -1,5 +1,5 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy|Montserrat&display=swap');
+// // Fonts
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat&display=swap');
 
 // Variables
 @import 'variables';
@@ -174,7 +174,15 @@ button.social:hover {
 }
 /* End Social Media */
 /* Clan View */
-
+.region {
+  height:42px !important;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  display:flex;
+  align-items:center;
+  font-weight:800;
+}
 .bg-image-blurred {
   height: 100%;
   width: 100%;
@@ -294,9 +302,6 @@ background-color: #3f3f3f7a;
     height: 35px;
     width: 35px;
     font-size: 16px;
-  }
-  .message {
-
   }
 }
 

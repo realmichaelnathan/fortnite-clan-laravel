@@ -3,9 +3,9 @@
 @section('title', 'Editing: '.$clan->name)
 
 @section('headers')
-<!-- include summernote css/js -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
-<!-- end summernote --->
+
 @endsection
 
 @section('footers')
@@ -20,7 +20,6 @@
                 ['style', ['bold', 'italic', 'underline']],
                 ['font', ['strikethrough']],
                 ['fontsize', ['fontsize']],
-                ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']]
             ],
             disableDragAndDrop: true
@@ -45,13 +44,6 @@
 
             <form action="/editclan" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="alert alert-secondary" role="alert">
-                    <h4 class="alert-heading">Want More People To Notice Your Clan?</h4>
-                    <p>A complete description with details about the clan such as the requirements to join and who to
-                        contact if someone is interested
-                        is a good start! Listing Clan Social Media accounts help you take your exposure to the next
-                        level!</p>
-                </div>
                 <div class="form-group">
                     <label>Name</label>
                     <input type="Text" class="form-control" name="name" value="{{ $clan->name }}" />
@@ -71,17 +63,36 @@
                     <small class="form-test text-muted">Please choose an image that is 16:9 in ratio. Larger is better.
                         Max File Size: 1MB.</small>
                 </div>
-                <div class="alert alert-secondary" role="alert">
-                    <h4 class="alert-heading">Discord Invite Links</h4>
-                    <p class="mb-0">
-                        When creating a invite link for your Discord server make sure that the link is not a temporary
-                        invite link.
-                        Links expire by default after 1 day! So make sure to go into the settings and set the link to
-                        never expire!
-                    </p>
-                    <hr>
-                    <p class="mb-0">If you do not have an account then leave the text field blank :)</p>
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <label class="d-block">Regions</label>
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                @foreach($regions as $region)
+                                <label class="btn btn-outline-primary region @if($clan->region->contains($region->id)) active @endif">
+                                    <input type="checkbox" name="regions[]" value="{{$region->id}}" @if($clan->region->contains($region->id)) checked @endif>{{$region->name}}
+                                </label>
+                                @endforeach
+                            </div>
+                            <small class="form-test mt-1 text-muted d-block">Select the regions your clan plays on.</small>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <label class="d-block">Platforms</label>
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                @foreach($platforms as $platform)
+                                <label class="btn btn-outline-secondary @if($clan->platform->contains($platform->id)) active @endif">
+                                    <input type="checkbox" name="platforms[]" value="{{$platform->id}}" @if($clan->platform->contains($platform->id)) checked @endif>
+                                    <i class="{{$platform->icon}}"></i>
+                                </label>
+                                @endforeach
+                            </div>
+                            <small class="form-test mt-1 text-muted d-block">Select the regions your clan plays on.</small>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="form-group">
                     <label>Discord</label>
                     <input type="Text" class="form-control" name="discord" value="{{ $clan->discord }}" />

@@ -7,7 +7,8 @@ namespace App\Http\Controllers;
 use App\Clans;
 
 use App\Votes;
-
+use App\Region;
+use App\Platform;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -146,6 +147,8 @@ class ClansController extends Controller
      public function show() {
 
           $clan = Clans::where('userid', Auth::id())->first();
+          $regions = Region::all();
+          $platforms = Platform::all();
 
           if (!$clan) {
 
@@ -153,7 +156,11 @@ class ClansController extends Controller
 
           } else {
 
-               return view('editclan', ['clan' => $clan]);
+               return view('editclan', [
+                    'clan' => $clan,
+                    'regions' => $regions,
+                    'platforms' => $platforms
+                    ]);
 
           }
 
@@ -162,7 +169,6 @@ class ClansController extends Controller
 
 
      public function update(Request $request) {
-
           $request->validate([
 
                'name' => 'min:3|max:25|unique:clans,name,'.Auth::id().',userid|regex:/^[\s\w-]*$/',
@@ -175,54 +181,54 @@ class ClansController extends Controller
 
                'twitter' => 'nullable|url',
 
-               'facebook' => 'nullable|url',
-
-               'website' => 'nullable|url'
+               'youtube' => 'nullable|url'
 
           ]);
 
 
 
-         $clan = Clans::where('userid', Auth::id())->first();
+          $clan = Clans::where('userid', Auth::id())->first();
 
-         $clan->name = $request->name;
-         $slug = str_slug($clan->name);
-         $checkSlug = Clans::whereSlug($slug)->count();
-         if($checkSlug > 0) {
-              $clan->slug = $slug . '-' . ($checkSlug + 1);
-         } else {
-              $clan->slug = $slug;
-         }
+          $clan->name = $request->name;
+          $slug = str_slug($clan->name);
+          $checkSlug = Clans::whereSlug($slug)->count();
+          $clan->region()->sync($request->regions);
+          $clan->platform()->sync($request->platforms);
+          if($checkSlug > 0) {
+               $clan->slug = $slug . '-' . ($checkSlug + 1);
+          } else {
+               $clan->slug = $slug;
+          }
 
-         $clan->slug = str_slug($request->name);
+          $clan->slug = str_slug($request->name);
 
-	     $clan->description = $request->description;
+          $clan->description = $request->description;
 
 	     $clan->discord = $request->discord;
 
-         $clan->instagram = $request->instagram;
+          $clan->instagram = $request->instagram;
 
-         $clan->twitter = $request->twitter;
+          $clan->twitter = $request->twitter;
 
-         $clan->youtube = $request->youtube;
-
-
-
-	    $clan->userid = Auth::id();
+          $clan->youtube = $request->youtube;
 
 
 
-	    //Lets handle the image upload here
-
-	    if ($request->hasFile('image')) {
+	     $clan->userid = Auth::id();
 
 
 
-		    $this->validate($request, [
+          //Lets handle the image upload here
 
-	 		  'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:512',
+          if ($request->hasFile('image')) {
 
-	 	  ]);
+
+
+               $this->validate($request, [
+
+                    'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:512',
+
+               ]);
 
 
 

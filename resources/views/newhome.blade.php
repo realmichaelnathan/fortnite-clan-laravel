@@ -1,7 +1,7 @@
 @extends('layout') 
 @section('title', 'Fortnite Clans') 
 @section('content')
-{{-- <div class="row justify-content-center mt-3">
+<div class="row justify-content-center mt-3">
      <div id="carouselCaptions" class="carousel slide w-100 px-1" data-ride="carousel">
          <ol class="carousel-indicators">
              <li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>
@@ -34,7 +34,7 @@
              <span class="sr-only">Next</span>
          </a>
      </div>
- </div> --}}
+ </div>
 
 <div class="row mt-3 px-1">
      <div class="col-12 col-md-6 col-lg-4 mb-sm-0 px-0 pr-md-1">
